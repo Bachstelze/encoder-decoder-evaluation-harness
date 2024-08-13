@@ -248,7 +248,8 @@ class HFLM(TemplateLM):
                 if accelerator.num_processes > 1:
                     if parallelize:
                         eval_logger.warning(
-                            "You are both using a HF Accelerate `device_map` (`--model_args parallelize=True`) and launching via `accelerate launch`. This will attempt to do model and data parallelism depending on the resources available."
+                            "You are 
+                            both using a HF Accelerate `device_map` (`--model_args parallelize=True`) and launching via `accelerate launch`. This will attempt to do model and data parallelism depending on the resources available."
                         )
                     elif gpus > accelerator.num_processes:
                         eval_logger.warning(
@@ -570,7 +571,7 @@ class HFLM(TemplateLM):
                 revision=revision,
                 torch_dtype=get_dtype(dtype),
                 trust_remote_code=trust_remote_code,
-                **model_kwargs,
+                #**model_kwargs,
             )
         else:
             try:
